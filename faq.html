@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Pc Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <style>
+        .faq-header { padding: 80px 0; background: #fff; border-bottom: 1px solid var(--border-light); }
+        .accordion-item { border: 1px solid var(--border-light); border-radius: 12px !important; margin-bottom: 1rem; overflow: hidden; }
+        .accordion-button { font-weight: 700; color: var(--text-heading); }
+        .accordion-button:not(.collapsed) { background: #f8fafc; color: var(--accent-primary); }
+    </style>
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <header class="faq-header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-800">Frequently Asked <span class="text-gradient">Questions</span></h1>
+            <p class="text-muted lead">Find answers to common questions about our products and services.</p>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                                What is the standard warranty on laptops?
+                            </button>
+                        </h2>
+                        <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                All our laptops come with a minimum 1-year manufacturer warranty. Some premium models include a 3-year extended warranty. We also offer our own "Pc Center Care" plans.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                                Do you provide on-site technical support?
+                            </button>
+                        </h2>
+                        <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Yes, we provide on-site technical support for both home and business users. Our technicians can assist with networking, server maintenance, and workstation setup.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

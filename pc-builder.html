@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom PC Builder | Pc Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <style>
+        .builder-step {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+        .builder-step.active {
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-md);
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-main);
+            color: var(--text-muted);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .active .step-number {
+            background: var(--accent-primary);
+            color: #fff;
+        }
+        .selection-preview {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .selection-preview img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: #f1f5f9;
+        }
+        .summary-sidebar {
+            position: sticky;
+            top: 100px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-lg);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <main class="container py-5">
+        <div class="row g-4">
+            <!-- Builder Steps -->
+            <div class="col-lg-8">
+                <div class="mb-5">
+                    <h1 class="fw-800">Build Your <span class="text-gradient">Dream PC</span></h1>
+                    <p class="text-muted">Select compatible components step-by-step.</p>
+                </div>
+
+                <div id="builder-steps-container">
+                    <!-- Step 1: CPU -->
+                    <div class="builder-step active" data-category="Processors">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="step-number">1</div>
+                                <h5 class="mb-0 fw-bold">Processor (CPU)</h5>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary select-part-btn">Select CPU</button>
+                        </div>
+                        <div class="selected-part-info d-none">
+                            <div class="selection-preview">
+                                <img src="" alt="Part">
+                                <div>
+                                    <div class="part-name fw-bold small"></div>
+                                    <div class="part-price text-primary small fw-bold"></div>
+                                </div>
+                                <button class="btn btn-link text-danger ms-auto btn-sm remove-part-btn"><i class="bi bi-x-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Motherboard -->
+                    <div class="builder-step" data-category="Motherboards">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="step-number">2</div>
+                                <h5 class="mb-0 fw-bold">Motherboard</h5>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary select-part-btn">Select Board</button>
+                        </div>
+                        <div class="selected-part-info d-none">
+                             <div class="selection-preview">
+                                <img src="" alt="Part">
+                                <div>
+                                    <div class="part-name fw-bold small"></div>
+                                    <div class="part-price text-primary small fw-bold"></div>
+                                </div>
+                                <button class="btn btn-link text-danger ms-auto btn-sm remove-part-btn"><i class="bi bi-x-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: RAM -->
+                    <div class="builder-step" data-category="Memory">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="step-number">3</div>
+                                <h5 class="mb-0 fw-bold">Memory (RAM)</h5>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary select-part-btn">Select RAM</button>
+                        </div>
+                         <div class="selected-part-info d-none">
+                             <div class="selection-preview">
+                                <img src="" alt="Part">
+                                <div>
+                                    <div class="part-name fw-bold small"></div>
+                                    <div class="part-price text-primary small fw-bold"></div>
+                                </div>
+                                <button class="btn btn-link text-danger ms-auto btn-sm remove-part-btn"><i class="bi bi-x-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: GPU -->
+                    <div class="builder-step" data-category="GPUs">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="step-number">4</div>
+                                <h5 class="mb-0 fw-bold">Graphics Card</h5>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary select-part-btn">Select GPU</button>
+                        </div>
+                         <div class="selected-part-info d-none">
+                             <div class="selection-preview">
+                                <img src="" alt="Part">
+                                <div>
+                                    <div class="part-name fw-bold small"></div>
+                                    <div class="part-price text-primary small fw-bold"></div>
+                                </div>
+                                <button class="btn btn-link text-danger ms-auto btn-sm remove-part-btn"><i class="bi bi-x-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Storage -->
+                    <div class="builder-step" data-category="Storage">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="step-number">5</div>
+                                <h5 class="mb-0 fw-bold">Storage (SSD/HDD)</h5>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary select-part-btn">Select Storage</button>
+                        </div>
+                         <div class="selected-part-info d-none">
+                             <div class="selection-preview">
+                                <img src="" alt="Part">
+                                <div>
+                                    <div class="part-name fw-bold small"></div>
+                                    <div class="part-price text-primary small fw-bold"></div>
+                                </div>
+                                <button class="btn btn-link text-danger ms-auto btn-sm remove-part-btn"><i class="bi bi-x-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Sidebar -->
+            <div class="col-lg-4">
+                <div class="summary-sidebar">
+                    <h5 class="fw-bold mb-4">Build Summary</h5>
+                    <div id="build-summary-list">
+                        <p class="text-muted small">No parts selected yet.</p>
+                    </div>
+                    <div class="border-top pt-3 mt-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">Total Est.</span>
+                            <span id="build-total" class="h4 fw-800 text-primary mb-0">$0.00</span>
+                        </div>
+                    </div>
+                    <button id="add-build-to-cart" class="btn btn-cyan w-100 mt-4 py-3 fw-bold" disabled>Add Build to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Component Selector Modal -->
+    <div class="modal fade" id="partSelectorModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+                <div class="modal-header border-light">
+                    <h5 class="modal-title fw-bold" id="selector-modal-title">Select Component</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="p-3 bg-light border-bottom">
+                        <input type="text" class="form-control border-0 bg-white shadow-sm" id="part-search" placeholder="Search parts...">
+                    </div>
+                    <div id="parts-list" class="list-group list-group-flush">
+                        <!-- Parts rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/data/products-data.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Core PC Builder Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const builderState = {
+                Processors: null,
+                Motherboards: null,
+                Memory: null,
+                GPUs: null,
+                Storage: null
+            };
+
+            const partSelectorModal = new bootstrap.Modal(document.getElementById('partSelectorModal'));
+            const partsListContainer = document.getElementById('parts-list');
+            const modalTitle = document.getElementById('selector-modal-title');
+            let currentCategory = '';
+
+            function updateUI() {
+                const steps = document.querySelectorAll('.builder-step');
+                let total = 0;
+                let summaryHtml = '';
+
+                steps.forEach(step => {
+                    const cat = step.dataset.category;
+                    const selection = builderState[cat];
+                    const infoDiv = step.querySelector('.selected-part-info');
+                    const selectBtn = step.querySelector('.select-part-btn');
+
+                    if (selection) {
+                        infoDiv.classList.remove('d-none');
+                        selectBtn.classList.add('d-none');
+                        infoDiv.querySelector('.part-name').textContent = selection.name;
+                        infoDiv.querySelector('.part-price').textContent = selection.price;
+                        infoDiv.querySelector('img').src = selection.image;
+                        
+                        total += parseFloat(selection.price.replace(/[$,]/g, ''));
+                        summaryHtml += `<div class="d-flex justify-content-between small mb-2"><span>${selection.name}</span><span class="fw-bold">${selection.price}</span></div>`;
+                    } else {
+                        infoDiv.classList.add('d-none');
+                        selectBtn.classList.remove('d-none');
+                    }
+                });
+
+                // Compatibility Logic: User requested all options to be open by default
+                const mbStepBtn = document.querySelector('.builder-step[data-category="Motherboards"] .select-part-btn');
+                mbStepBtn.disabled = false;
+
+                document.getElementById('build-total').textContent = `$${total.toFixed(2)}`;
+                document.getElementById('build-summary-list').innerHTML = summaryHtml || '<p class="text-muted small">No parts selected yet.</p>';
+                document.getElementById('add-build-to-cart').disabled = total === 0;
+            }
+
+            document.querySelectorAll('.select-part-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentCategory = btn.closest('.builder-step').dataset.category;
+                    modalTitle.textContent = `Select ${currentCategory}`;
+                    renderPartsList();
+                    partSelectorModal.show();
+                });
+            });
+
+            document.querySelectorAll('.remove-part-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cat = btn.closest('.builder-step').dataset.category;
+                    builderState[cat] = null;
+                    updateUI();
+                });
+            });
+
+            function renderPartsList() {
+                const categoryProducts = products.filter(p => p.category === currentCategory);
+                
+                partsListContainer.innerHTML = categoryProducts.map(p => `
+                    <div class="list-group-item list-group-item-action d-flex align-items-center gap-3 p-3 part-item" data-id="${p.id}" style="cursor:pointer">
+                        <img src="${p.image}" width="60" height="60" class="rounded" style="object-fit:cover">
+                        <div class="flex-grow-1">
+                            <h6 class="fw-bold mb-0">${p.name}</h6>
+                            <small class="text-muted">${p.brand}</small>
+                        </div>
+                        <div class="fw-bold text-primary">${p.price}</div>
+                    </div>
+                `).join('');
+
+                partsListContainer.querySelectorAll('.part-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const partId = parseInt(item.dataset.id);
+                        builderState[currentCategory] = products.find(p => p.id === partId);
+                        partSelectorModal.hide();
+                        updateUI();
+                    });
+                });
+            }
+
+            document.getElementById('add-build-to-cart').addEventListener('click', () => {
+                Object.values(builderState).forEach(part => {
+                    if (part) Cart.addItem(part);
+                });
+                Cart.openDrawer();
+            });
+
+            updateUI();
+        });
+    </script>
+</body>
+</html>
